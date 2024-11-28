@@ -29,6 +29,8 @@ li {
   font-family: "Manrope", sans-serif;
 }
 
+/** HEADER STYLING **/
+
 header {
   position: relative;
   display: flex;
@@ -102,7 +104,10 @@ header nav a:hover {
   right: 0;
 }
 
+/** END OF HEADER STYLING **/
+
 @media only screen and (min-width: 768px) {
+  /** HEADER STYLING DESKTOP **/
   #hamburger {
     display: none;
   }
@@ -124,4 +129,6 @@ header nav a:hover {
   .logo-text {
     display: block;
   }
+
+  /** END OF HEADER STYLING DESKTOP **/
 }
