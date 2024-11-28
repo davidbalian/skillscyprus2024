@@ -184,7 +184,7 @@ main {
   border: 1px solid var(--border-color);
   background-color: var(--container-bg-color);
   box-shadow: 0 2px 8px 0 rgba(190, 190, 190, 0.641);
-  height: fit-content;
+  height: 460px;
   overflow-y: hidden;
   scroll-snap-align: center;
 }
@@ -363,6 +363,14 @@ button:hover {
 }
 
 @media only screen and (min-width: 768px) {
+  .recipe {
+    height: 480px;
+  }
+
+  .show-instructions {
+    transition: height 1s ease;
+    height: fit-content;
+  }
   /** HEADER STYLING DESKTOP **/
   #hamburger {
     display: none;

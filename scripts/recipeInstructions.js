@@ -1,11 +1,13 @@
 window.onload = () => {
-  recipeInstructionsButton = document.querySelector(".get-recipe-btn");
+  recipeInstructionsButton = document.querySelectorAll(".get-recipe-btn");
   recipe = document.querySelector(".recipe");
 
-  //   recipeInstructionsButton.addEventListener("click", () => {
-  //     recipe.classList.toggle("show-instructions");
-  //     // alert();
-  //   });
+  hamburgerMenuIcon = document.getElementById("hamburger");
+  navigationMenu = document.querySelector("nav");
+
+  hamburgerMenuIcon.addEventListener("click", () => {
+    navigationMenu.classList.toggle("navigation-active");
+  });
 
   recipeInstructionsButton.forEach((button) => {
     button.addEventListener("click", () => {
