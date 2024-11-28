@@ -14,10 +14,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-margin-top: 10rem;
 }
 
 body {
   overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 h1,
@@ -144,6 +149,7 @@ main {
 
 .latest-recipe-time {
   display: flex;
+  gap: 0.25rem;
 }
 
 .latest-recipe-recipe-details {
