@@ -4,6 +4,7 @@
   --container-bg-color: #f9f9f9;
   --text-color: #222;
   --secondary-text-color: #444;
+  --max-width: 1300px;
 }
 
 * {
@@ -34,6 +35,20 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: var(--general-container-padding);
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.logo-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 500;
+  display: none;
 }
 
 header .header-logo {
@@ -59,14 +74,13 @@ header .hamburger {
 }
 
 header nav {
-  transform: translateX(150px);
-  transition: transform 0.2s ease;
+  transition: right 0.2s ease;
   position: fixed;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   background-color: var(--container-bg-color);
-  right: 0;
+  right: -200px;
   top: 0;
   height: 100svh;
   border-left: 1px solid var(--border-color);
@@ -84,10 +98,30 @@ header nav a:hover {
   text-decoration: underline;
 }
 
-.show-nav {
-  transform: translateX(0);
+.navigation-active {
+  right: 0;
 }
 
-.hide-nav {
-  transform: translateX(150px);
+@media only screen and (min-width: 768px) {
+  #hamburger {
+    display: none;
+  }
+
+  header nav {
+    flex-direction: row;
+    position: static;
+    height: auto;
+    padding: 0;
+    gap: 1.5rem;
+    background-color: transparent;
+  }
+
+  header .header-logo {
+    width: 65px;
+    height: auto;
+  }
+
+  .logo-text {
+    display: block;
+  }
 }

@@ -17,21 +17,26 @@
   </head>
   <body>
     <header>
-      <img
-        src="./media/logos/headerLogo.webp"
-        class="header-logo"
-        alt="Meal Explorer Logo Without Text"
-      />
+      <div class="logo-wrapper">
+        <img
+          src="./media/logos/headerLogo.webp"
+          class="header-logo"
+          alt="Meal Explorer Logo Without Text"
+        />
+        <p class="logo-text">Meal Explorer</p>
+      </div>
       <nav class="nav">
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Latest Recipes</a>
       </nav>
-      <div class="hamburger">
+      <div class="hamburger" id="hamburger">
         <div class="hamburger-line"></div>
         <div class="hamburger-line"></div>
         <div class="hamburger-line"></div>
       </div>
     </header>
+
+    <script src="./scripts/hamburgerMenu.js"></script>
   </body>
 </html>
