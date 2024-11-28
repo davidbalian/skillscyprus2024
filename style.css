@@ -4,6 +4,9 @@
   --container-bg-color: #f9f9f9;
   --text-color: #222;
   --secondary-text-color: #444;
+  --accent: rgb(250, 80, 30);
+  --accent-dark: hsl(14, 96%, 45%);
+
   --max-width: 1300px;
 }
 
@@ -25,7 +28,8 @@ h5,
 h6,
 p,
 a,
-li {
+li,
+button {
   font-family: "Manrope", sans-serif;
 }
 
@@ -132,6 +136,8 @@ main {
   border: 1px solid var(--border-color);
   background-color: var(--container-bg-color);
   box-shadow: 0 2px 8px 0 rgba(190, 190, 190, 0.641);
+  height: 460px;
+  overflow-y: hidden;
 }
 
 .recipe img {
@@ -145,6 +151,7 @@ main {
 }
 
 .other-details {
+  margin-top: 1rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -157,6 +164,45 @@ main {
   align-items: center;
   gap: 0.25rem;
 }
+
+.recipe-instructions {
+  padding: var(--general-container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.recipe-instructions ol {
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.button-container {
+  padding: 0.5rem var(--general-container-padding);
+}
+
+.show-instructions {
+  transition: height 1s ease;
+  height: fit-content;
+}
+
+button {
+  padding: 8px 12px;
+  background-color: var(--accent);
+  border: none;
+  border-radius: 0.25rem;
+  color: var(--container-bg-color);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--accent-dark);
+}
+
+/** END OF RECIPES STYLING **/
 
 @media only screen and (min-width: 768px) {
   /** HEADER STYLING DESKTOP **/
