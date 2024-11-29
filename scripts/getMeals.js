@@ -1,4 +1,25 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 const apiUrl = "https://www.themealdb.com/api/json/v1/1/";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBTglESG1TMkPiYFztVMC42Y2WxJrf5viM",
+  authDomain: "skillscyprus2024-c5da0.firebaseapp.com",
+  projectId: "skillscyprus2024-c5da0",
+  storageBucket: "skillscyprus2024-c5da0.firebasestorage.app",
+  messagingSenderId: "928155121467",
+  appId: "1:928155121467:web:b8475fe84285d98c7da91e",
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth();
+// const user = auth.currentUser;
 
 let form = document.getElementById("form");
 let searchResultsParentDiv = document.querySelector(".search-results-inner");
@@ -140,6 +161,19 @@ function displaySearchResults(results) {
 
       ingredientsWrapper.appendChild(ingredientsHeading);
       ingredientsWrapper.appendChild(ingredientsDisplay);
+
+      onAuthStateChanged(auth, (user) => {
+        console.log(user);
+
+        if (user) {
+          let addToFav = document.createElement("button");
+          addToFav.innerHTML = "Add to Favorites";
+          addToFav.className = "add-to-fav";
+
+          resultWrapper.appendChild(addToFav);
+        } else {
+        }
+      });
 
       // adding elements to main search result
       resultWrapper.appendChild(resultImg);

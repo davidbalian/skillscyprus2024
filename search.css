@@ -95,6 +95,17 @@ header {
   padding: 0 8px;
 }
 
+.result-wrapper {
+  position: relative;
+}
+
+.add-to-fav {
+  position: absolute;
+  top: 1rem;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
 .search-results-inner {
   display: flex;
   flex-direction: column;

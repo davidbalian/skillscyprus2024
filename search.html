@@ -51,7 +51,7 @@
             type="text"
             name="mealName"
             id="meal-name"
-            placeholder="Enter your meal name, category, or country"
+            placeholder="Enter meal details: e.g Chicken, Vegan, Greek"
           />
           <!-- <select name="category" id="meal-ingredient">
             <option value="default">Select Meal Category</option>
@@ -124,7 +124,7 @@
     <div class="search-results">
       <div class="search-results-inner"></div>
     </div>
-    <script src="./scripts/getMeals.js"></script>
+    <script type="module" src="./scripts/getMeals.js"></script>
     <script type="module">
       let nav = document.querySelector("nav");
 
@@ -151,8 +151,6 @@
       // const user = auth.currentUser;
 
       onAuthStateChanged(auth, (user) => {
-        console.log(user);
-
         if (user) {
           let link = document.createElement("a");
           link.innerHTML = "Log Out";
