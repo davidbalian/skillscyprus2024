@@ -29,6 +29,7 @@
         <a href="/">Home</a>
         <a href="#about">About</a>
         <a href="#latest-recipes">Latest Recipes</a>
+        <a href="/search.html">Search</a>
       </nav>
       <div class="hamburger" id="hamburger">
         <div class="hamburger-line"></div>
@@ -450,5 +451,57 @@
     </main>
 
     <script src="./scripts/recipeInstructions.js"></script>
+    <script type="module">
+      let nav = document.querySelector("nav");
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBTglESG1TMkPiYFztVMC42Y2WxJrf5viM",
+        authDomain: "skillscyprus2024-c5da0.firebaseapp.com",
+        projectId: "skillscyprus2024-c5da0",
+        storageBucket: "skillscyprus2024-c5da0.firebasestorage.app",
+        messagingSenderId: "928155121467",
+        appId: "1:928155121467:web:b8475fe84285d98c7da91e",
+      };
+
+      const app = initializeApp(firebaseConfig);
+
+      const auth = getAuth();
+      // const user = auth.currentUser;
+
+      onAuthStateChanged(auth, (user) => {
+        console.log(user);
+
+        if (user) {
+          let link = document.createElement("a");
+          link.innerHTML = "Log Out";
+          link.src = "#";
+
+          link.addEventListener("click", () => {
+            signOut(auth);
+            window.location.href = "/";
+          });
+
+          nav.appendChild(link);
+        } else {
+          let link = document.createElement("a");
+          link.innerHTML = "Sign Up";
+          link.href = "/register.html";
+          let link2 = document.createElement("a");
+          link2.innerHTML = "Log In";
+          link2.href = "/login.html";
+
+          nav.appendChild(link);
+          nav.appendChild(link2);
+        }
+      });
+    </script>
   </body>
 </html>

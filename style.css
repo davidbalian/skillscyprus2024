@@ -25,6 +25,10 @@ html {
   scroll-behavior: smooth;
 }
 
+nav a:hover {
+  cursor: pointer;
+}
+
 h1,
 h2,
 h3,
