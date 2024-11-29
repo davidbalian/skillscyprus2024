@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In to Meal Explorer</title>
+  </head>
+  <body>
+    <form class="signup-form">
+      <h3>Create Account</h3>
+
+      <div class="input-container">
+        <label for="email">Email</label>
+        <input type="email" placeholder="Email or Phone" id="email" required />
+      </div>
+
+      <div class="input-container">
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" required />
+      </div>
+
+      <button type="submit" id="submit">Login</button>
+    </form>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBTglESG1TMkPiYFztVMC42Y2WxJrf5viM",
+        authDomain: "skillscyprus2024-c5da0.firebaseapp.com",
+        projectId: "skillscyprus2024-c5da0",
+        storageBucket: "skillscyprus2024-c5da0.firebasestorage.app",
+        messagingSenderId: "928155121467",
+        appId: "1:928155121467:web:b8475fe84285d98c7da91e",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      const auth = getAuth();
+
+      let email = document.getElementById("email");
+      console.log(email);
+      let password = document.getElementById("password");
+
+      const submit = document.getElementById("submit");
+
+      submit.addEventListener("click", function (event) {
+        event.preventDefault();
+        signInWithEmailAndPassword(auth, email.value, password.value)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            window.location.href = "/search.html";
+            // ...
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+          });
+      });
+    </script>
+  </body>
+</html>

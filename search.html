@@ -35,6 +35,7 @@
         <a href="/">Home</a>
         <a href="/#about">About</a>
         <a href="/#latest-recipes">Latest Recipes</a>
+        <a href="/#" class="sign-up-link">Sign Up</a>
       </nav>
       <div class="hamburger" id="hamburger">
         <div class="hamburger-line"></div>
@@ -53,54 +54,54 @@
             id="meal-name"
             placeholder="Enter your meal name"
           />
-          <select name="ingredient" id="meal-ingredient">
+          <select name="category" id="meal-ingredient">
             <option value="default">Select Meal Category</option>
-            <option value="default">Beef</option>
-            <option value="default">Chicken</option>
-            <option value="default">Dessert</option>
-            <option value="default">Lamb</option>
-            <option value="default">Miscellaneous</option>
-            <option value="default">Pasta</option>
-            <option value="default">Pork</option>
-            <option value="default">Seafood</option>
-            <option value="default">Side</option>
-            <option value="default">Starter</option>
-            <option value="default">Vegan</option>
-            <option value="default">Vegetarian</option>
-            <option value="default">Breakfast</option>
-            <option value="default">Goat</option>
+            <option value="Beef">Beef</option>
+            <option value="Chicken">Chicken</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Lamb">Lamb</option>
+            <option value="Miscellaneous">Miscellaneous</option>
+            <option value="Pasta">Pasta</option>
+            <option value="Pork">Pork</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Side">Side</option>
+            <option value="Starter">Starter</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Goat">Goat</option>
           </select>
           <select name="country" id="meal-country">
             <option value="default">Select Country</option>
-            <option value="default">American</option>
-            <option value="default">British</option>
-            <option value="default">Canadian</option>
-            <option value="default">Chinese</option>
-            <option value="default">Croatian</option>
-            <option value="default">Dutch</option>
-            <option value="default">Egyptian</option>
-            <option value="default">Filipino</option>
-            <option value="default">French</option>
-            <option value="default">Greek</option>
-            <option value="default">Indian</option>
-            <option value="default">Irish</option>
-            <option value="default">Italian</option>
-            <option value="default">Japanese</option>
-            <option value="default">Kenyan</option>
-            <option value="default">Malaysian</option>
-            <option value="default">Mexican</option>
-            <option value="default">Moroccan</option>
-            <option value="default">Polish</option>
-            <option value="default">Moroccan</option>
-            <option value="default">Portuguese</option>
-            <option value="default">Russian</option>
-            <option value="default">Spanish</option>
-            <option value="default">Thai</option>
-            <option value="default">Tunisian</option>
-            <option value="default">Turkish</option>
-            <option value="default">Ukrainian</option>
-            <option value="default">Vietnamese</option>
-            <option value="default">Unknown</option>
+            <option value="American">American</option>
+            <option value="British">British</option>
+            <option value="Canadian">Canadian</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Croatian">Croatian</option>
+            <option value="Dutch">Dutch</option>
+            <option value="Egyptian">Egyptian</option>
+            <option value="Filipino">Filipino</option>
+            <option value="French">French</option>
+            <option value="Greek">Greek</option>
+            <option value="Indian">Indian</option>
+            <option value="Irish">Irish</option>
+            <option value="Italian">Italian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Kenyan">Kenyan</option>
+            <option value="Malaysian">Malaysian</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Moroccan">Moroccan</option>
+            <option value="Polish">Polish</option>
+            <option value="Moroccan">Moroccan</option>
+            <option value="Portuguese">Portuguese</option>
+            <option value="Russian">Russian</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Thai">Thai</option>
+            <option value="Tunisian">Tunisian</option>
+            <option value="Turkish">Turkish</option>
+            <option value="Ukrainian">Ukrainian</option>
+            <option value="Vietnamese">Vietnamese</option>
+            <option value="Unknown">Unknown</option>
           </select>
           <button type="submit">
             <svg
@@ -124,29 +125,6 @@
     <div class="search-results">
       <div class="search-results-inner"></div>
     </div>
-    <!-- ADDING FIREBASE -->
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-      import { getAuth } from "firebase/auth";
-
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyBTglESG1TMkPiYFztVMC42Y2WxJrf5viM",
-        authDomain: "skillscyprus2024-c5da0.firebaseapp.com",
-        projectId: "skillscyprus2024-c5da0",
-        storageBucket: "skillscyprus2024-c5da0.firebasestorage.app",
-        messagingSenderId: "928155121467",
-        appId: "1:928155121467:web:b8475fe84285d98c7da91e",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-    </script>
     <script src="./scripts/getMeals.js"></script>
   </body>
 </html>
