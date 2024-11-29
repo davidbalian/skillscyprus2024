@@ -9,100 +9,153 @@ form.addEventListener("submit", (e) => {
   let formData = new FormData(form);
   let parsedFormData = Object.fromEntries(formData);
   console.log(parsedFormData);
+  let mealName = parsedFormData.mealName;
+  let category = parsedFormData.category;
+  let country = parsedFormData.country;
 
-  // search by name if only meal is entered
-  if (parsedFormData.mealName) {
-    fetch(`${apiUrl}/search.php?s=${parsedFormData.mealName}`)
+  if (mealName && category == "default" && country == "default") {
+    fetch(`${apiUrl}/search.php?s=${mealName}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.meals);
-
-        let meals = data.meals;
-
-        displaySearchResults(meals);
+        callAPIAndDisplayResults(data);
       })
       .catch((error) => console.error("Errror: ", error));
+  } else if (mealName == "" && category != "default" && country == "default") {
+    fetch(`${apiUrl}/search.php?s=${category}`)
+      .then((res) => res.json())
+      .then((data) => {
+        callAPIAndDisplayResults(data);
+      })
+      .catch((error) => console.error("Errror: ", error));
+  } else if (mealName == "" && country != "default" && category == "default") {
+    fetch(`${apiUrl}/search.php?s=${country}`)
+      .then((res) => res.json())
+      .then((data) => {
+        callAPIAndDisplayResults(data);
+      })
+      .catch((error) => console.error("Errror: ", error));
+  } else {
+    if (mealName) {
+      fetch(`${apiUrl}/search.php?s=${mealName}`)
+        .then((res) => res.json())
+        .then((data) => {
+          callAPIAndDisplayResults(data);
+        })
+        .catch((error) => console.error("Errror: ", error));
+    } else if (country) {
+      fetch(`${apiUrl}/search.php?s=${country}`)
+        .then((res) => res.json())
+        .then((data) => {
+          callAPIAndDisplayResults(data);
+        })
+        .catch((error) => console.error("Errror: ", error));
+    } else if (category) {
+      fetch(`${apiUrl}/search.php?s=${category}`)
+        .then((res) => res.json())
+        .then((data) => {
+          callAPIAndDisplayResults(data);
+        })
+        .catch((error) => console.error("Errror: ", error));
+    }
   }
 });
+
+function callAPIAndDisplayResults(data) {
+  let meals = data.meals;
+
+  displaySearchResults(meals);
+}
 
 function displaySearchResults(results) {
   searchResultsParentDiv.innerHTML = "";
 
-  results.forEach((result) => {
-    // create main result wrapper that contains both main details and also popup for instructions and ingredients
-    let resultWrapper = document.createElement("div");
-    resultWrapper.className = "result-wrapper";
+  if (results) {
+    results.forEach((result) => {
+      // create main result wrapper that contains both main details and also popup for instructions and ingredients
+      let resultWrapper = document.createElement("div");
+      resultWrapper.className = "result-wrapper";
 
-    // create container div for name, area, and show-instructions button
-    let detailsContainer = document.createElement("div");
-    detailsContainer.className = "result-details";
+      let detailsWrapper = document.createElement("div");
+      detailsWrapper.className = "details-wrapper";
 
-    // create meal img element
-    let resultImg = document.createElement("img");
-    resultImg.src = result.strMealThumb;
+      // create container div for name, area, and show-instructions button
+      let detailsContainer = document.createElement("div");
+      detailsContainer.className = "result-details";
 
-    // create meal name element
-    let resultName = document.createElement("h3");
-    resultName.innerHTML = result.strMeal;
+      // create meal img element
+      let resultImg = document.createElement("img");
+      resultImg.src = result.strMealThumb;
 
-    // create meal area element
-    let resultArea = document.createElement("p");
-    resultArea.innerHTML = result.strArea;
+      // create meal name element
+      let resultName = document.createElement("h3");
+      resultName.innerHTML = result.strMeal;
 
-    // create instructions wrapper
-    let instructionsWrapper = document.createElement("div");
-    instructionsWrapper.className = "instructions-wrapper";
+      // create meal area element
+      let resultArea = document.createElement("p");
+      resultArea.innerHTML = result.strArea;
 
-    // create ingredients wrapper
-    let ingredientsWrapper = document.createElement("div");
-    ingredientsWrapper.className = "ingredients-wrapper";
+      // create instructions wrapper
+      let instructionsWrapper = document.createElement("div");
+      instructionsWrapper.className = "instructions-wrapper";
 
-    // creating ingredients display
-    let ingredientsDisplay = document.createElement("div");
-    let ingredientsHeading = document.createElement("h3");
-    ingredientsHeading.innerHTML = "Ingredients";
+      // create ingredients wrapper
+      let ingredientsWrapper = document.createElement("div");
+      ingredientsWrapper.className = "ingredients-wrapper";
 
-    let instructionsHeading = document.createElement("h3");
-    instructionsHeading.innerHTML = "Instructions";
+      // creating ingredients display
+      let ingredientsDisplay = document.createElement("div");
+      let ingredientsHeading = document.createElement("h3");
+      ingredientsHeading.innerHTML = "Ingredients";
 
-    // genereating elements for ingredients and amounts
-    for (let i = 1; i <= 20; i++) {
-      let ingredient = document.createElement("p");
-      ingredient.className = "ingredient";
-      let amount = document.createElement("p");
-      amount.className = "amount";
+      let instructionsHeading = document.createElement("h3");
+      instructionsHeading.innerHTML = "Instructions";
 
-      let ingredientRow = document.createElement("div");
+      // genereating elements for ingredients and amounts
+      for (let i = 1; i <= 20; i++) {
+        let ingredient = document.createElement("p");
+        ingredient.className = "ingredient";
+        let amount = document.createElement("p");
+        amount.className = "amount";
 
-      if (result[`strIngredient${i}`]) {
-        ingredient.innerHTML = result[`strIngredient${i}`];
-        amount.innerHTML = result[`strMeasure${i}`];
+        let ingredientRow = document.createElement("div");
+        ingredientRow.className = "ingredient-row";
 
-        ingredientRow.appendChild(ingredient);
-        ingredientRow.appendChild(amount);
+        if (result[`strIngredient${i}`]) {
+          ingredient.innerHTML = result[`strIngredient${i}`];
+          amount.innerHTML = result[`strMeasure${i}`];
 
-        ingredientsDisplay.appendChild(ingredientRow);
+          ingredientRow.appendChild(ingredient);
+          ingredientRow.appendChild(amount);
+
+          ingredientsDisplay.appendChild(ingredientRow);
+        }
       }
-    }
 
-    // create instructions p tag
-    let instructions = document.createElement("p");
-    instructions.innerHTML = result.strInstructions;
+      // create instructions p tag
+      let instructions = document.createElement("p");
+      instructions.innerHTML = result.strInstructions;
 
-    instructionsWrapper.appendChild(instructionsHeading);
-    instructionsWrapper.appendChild(instructions);
+      instructionsWrapper.appendChild(instructionsHeading);
+      instructionsWrapper.appendChild(instructions);
 
-    ingredientsWrapper.appendChild(ingredientsHeading);
-    ingredientsWrapper.appendChild(ingredientsDisplay);
+      ingredientsWrapper.appendChild(ingredientsHeading);
+      ingredientsWrapper.appendChild(ingredientsDisplay);
 
-    // adding elements to main search result
-    resultWrapper.appendChild(resultImg);
-    resultWrapper.appendChild(detailsContainer);
-    resultWrapper.appendChild(instructionsWrapper);
-    resultWrapper.appendChild(ingredientsWrapper);
-    detailsContainer.appendChild(resultName);
-    detailsContainer.appendChild(resultArea);
+      // adding elements to main search result
+      resultWrapper.appendChild(resultImg);
+      detailsWrapper.appendChild(detailsContainer);
+      detailsWrapper.appendChild(instructionsWrapper);
+      detailsWrapper.appendChild(ingredientsWrapper);
+      resultWrapper.appendChild(detailsWrapper);
+      detailsContainer.appendChild(resultName);
+      detailsContainer.appendChild(resultArea);
 
-    searchResultsParentDiv.appendChild(resultWrapper);
-  });
+      searchResultsParentDiv.appendChild(resultWrapper);
+    });
+  } else {
+    let noResults = document.createElement("h2");
+    noResults.innerHTML = "No results";
+
+    searchResultsParentDiv.appendChild(noResults);
+  }
 }
