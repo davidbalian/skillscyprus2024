@@ -1,0 +1,96 @@
+:root {
+  --general-container-padding: 1rem;
+  --border-color: #eee;
+  --container-bg-color: #f9f9f9;
+  --text-color: #222;
+  --secondary-text-color: #444;
+  --accent: rgb(250, 80, 30);
+  --accent-dark: hsl(14, 96%, 45%);
+
+  --max-width: 1100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  z-index: 99;
+}
+
+.search-hero {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+    url("./media/searchBg.webp");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 14rem 1rem 12rem 1rem;
+  z-index: 2;
+}
+
+.search-hero-inner {
+  max-width: var(--max-width);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.search-hero h2 {
+  color: var(--container-bg-color);
+  font-size: 3rem;
+}
+
+.search-hero button[type="submit"] svg {
+  fill: var(--container-bg-color);
+  width: 20px;
+}
+
+.search-hero button[type="submit"] {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-hero form {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--container-bg-color);
+  border-radius: 0.25rem;
+  border: 2px solid var(--border-color);
+}
+
+.search-hero input,
+.search-hero select {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+}
+
+.search-hero input:focus,
+.search-hero select:focus {
+  outline: none !important;
+}
+
+.search-hero input {
+  min-width: 25ch;
+  padding: 0 8px;
+}
