@@ -32,9 +32,9 @@
         <h1 class="logo-text">Meal Explorer</h1>
       </div>
       <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/#about">About</a>
-        <a href="/#latest-recipes">Latest Recipes</a>
+        <a href="/skillscyprus2024">Home</a>
+        <a href="/skillscyprus2024/#about">About</a>
+        <a href="/skillscyprus2024/#latest-recipes">Latest Recipes</a>
       </nav>
       <div class="hamburger" id="hamburger">
         <div class="hamburger-line"></div>
@@ -158,17 +158,17 @@
 
           link.addEventListener("click", () => {
             signOut(auth);
-            window.location.href = "/";
+            window.location.href = "/skillscyprus2024";
           });
 
           nav.appendChild(link);
         } else {
           let link = document.createElement("a");
           link.innerHTML = "Sign Up";
-          link.href = "/register.html";
+          link.href = "/skillscyprus2024/register.html";
           let link2 = document.createElement("a");
           link2.innerHTML = "Log In";
-          link2.href = "/login.html";
+          link2.href = "/skillscyprus2024/login.html";
 
           nav.appendChild(link);
           nav.appendChild(link2);
